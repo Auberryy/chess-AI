@@ -1,6 +1,6 @@
 # ChessAI — AlphaZero-style Training System ✅
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-GPLv3-blue.svg)](LICENSE)
 
 A high-performance research implementation of an AlphaZero-style chess training system. Written in C++ with optional CUDA acceleration and LibTorch (PyTorch C++ API), the project focuses on reproducible self-play training, efficient MCTS, and evaluation against Stockfish.
 
@@ -167,15 +167,15 @@ Please follow a standard git workflow and sign-off on contributions if required 
 
 ## License & Acknowledgments 📜
 
-- MIT License — see `LICENSE` for full text.
+- **GNU General Public License v3.0** — see `LICENSE` for full text.
+- **Note:** This project is released under GPLv3 to maintain compatibility with GPLv3-licensed dependencies (e.g., Stockfish).
 - Thanks to DeepMind (AlphaZero), Leela Chess Zero, and Stockfish for inspiration and tooling.
 
 ---
 
 ## Contact / Support 💬
 
-If you run into issues, please open an issue on GitHub with details (platform, build commands, logs). For quick questions, include reproduction steps and config snippets. 
-Note: This is a personal project, so please be aware that issues may or may not get noticed. I apologize if the issues don't get noticed.
+If you run into issues, please open an issue on GitHub with details (platform, build commands, logs). For quick questions, include reproduction steps and config snippets.
 
 ---
 

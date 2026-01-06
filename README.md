@@ -1,6 +1,6 @@
 # ChessAI — AlphaZero-style Training System ✅
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Build Status](https://img.shields.io/badge/build-pending-lightgrey.svg)](#)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 A high-performance research implementation of an AlphaZero-style chess training system. Written in C++ with optional CUDA acceleration and LibTorch (PyTorch C++ API), the project focuses on reproducible self-play training, efficient MCTS, and evaluation against Stockfish.
 

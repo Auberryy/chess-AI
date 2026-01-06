@@ -1,0 +1,124 @@
+# Training Configuration File
+# Edit these values to customize training behavior
+
+[training]
+# Number of self-play games per training iteration
+num_self_play_games = 100
+
+# Number of parallel self-play games (increase for faster data generation)
+num_parallel_games = 32
+
+# MCTS simulations per move (higher = stronger but slower)
+mcts_simulations = 800
+
+# Temperature for move selection in first N moves (encourages exploration)
+temperature_initial = 1.0
+temperature_threshold = 30  # Switch to low temperature after this many moves
+
+[neural_network]
+# Number of residual blocks (AlphaZero uses 19 or 39)
+num_residual_blocks = 19
+
+# Number of filters in convolutional layers
+num_filters = 256
+
+# Training batch size
+batch_size = 2048
+
+# Initial learning rate
+learning_rate = 0.002
+
+# Learning rate decay factor
+learning_rate_decay = 0.1
+
+# Steps between learning rate decay
+learning_rate_decay_steps = 100000
+
+[replay_buffer]
+# Maximum number of positions in replay buffer
+max_size = 500000
+
+# Minimum positions before training starts
+min_samples = 10000
+
+[evaluation]
+# Evaluate against Stockfish every N iterations
+evaluation_interval = 10
+
+# Number of games per evaluation
+evaluation_games = 100
+
+# Stockfish search depth
+stockfish_depth = 10
+
+# Stockfish time per move (milliseconds)
+stockfish_time_ms = 100
+
+# Target win rate (will prompt when reached)
+target_win_rate = 0.50
+
+[gpu]
+# GPU device ID
+device_id = 0
+
+# Fraction of GPU memory to use (0.0 - 1.0)
+# For RTX 3090 with 24GB, 0.5 = 12GB
+memory_fraction = 0.5
+
+# Enable mixed precision training (FP16/AMP)
+# Requires Ampere or newer GPU (RTX 30xx+)
+# Provides ~2x speedup and 2x memory savings
+# TF32 is always enabled automatically for Ampere GPUs (~8x matmul speedup)
+use_amp = true
+
+[checkpoints]
+# Save checkpoint every N iterations
+checkpoint_interval = 10
+
+# Checkpoint directory
+checkpoint_dir = "checkpoints"
+
+[stockfish]
+# Path to Stockfish executable
+path = "stockfish/stockfish.exe"
+
+# Note: On Linux, use "stockfish/stockfish" or system-installed "stockfish"
+
+[elo_training]
+# Elo-based training configuration
+# Uses a challenger vs champion system - models are only saved when they improve
+
+# Elo gain threshold required to save a new model
+# +1 Elo ≈ 50.14% win rate
+# +5 Elo ≈ 50.72% win rate
+# +10 Elo ≈ 51.43% win rate
+elo_threshold = 1.0
+
+# Number of games in evaluation match between challenger and champion
+evaluation_games = 100
+
+# MCTS simulations for evaluation (can be lower than training for speed)
+evaluation_simulations = 400
+
+# Directory to save champion models
+models_dir = "models"
+
+# Also train NNUE network alongside MCTS network
+train_nnue = false
+
+# Train NNUE every N iterations
+nnue_training_interval = 5
+
+[nnue]
+# NNUE (Efficiently Updatable Neural Networks) configuration
+# Provides fast evaluation without GPU - good for deployment
+
+# HalfKP feature set size (king-piece relationship features)
+# Standard HalfKP: 64 king squares × 64 piece squares × 10 piece types = 40960
+feature_size = 40960
+
+# Hidden layer size in NNUE network
+hidden_size = 256
+
+# Learning rate for NNUE training
+learning_rate = 0.001
